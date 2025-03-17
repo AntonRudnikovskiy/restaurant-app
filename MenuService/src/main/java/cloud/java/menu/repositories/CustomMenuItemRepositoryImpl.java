@@ -1,11 +1,11 @@
-package cloud.java.menu.repositories.custom;
+package cloud.java.menu.repositories;
 
 import cloud.java.menu.dto.SortBy;
 import cloud.java.menu.dto.UpdateMenuRequest;
 import cloud.java.menu.model.Category;
 import cloud.java.menu.model.MenuItem;
 import cloud.java.menu.model.MenuItem_;
-import cloud.java.menu.service.MenuAttrUpdater;
+import cloud.java.menu.repositories.updaters.MenuAttrUpdater;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;

@@ -1,4 +1,4 @@
-package cloud.java.menu.repositories.custom;
+package cloud.java.menu.repositories;
 
 import cloud.java.menu.dto.SortBy;
 import cloud.java.menu.dto.UpdateMenuRequest;
@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface CustomMenuItemRepository {
     int updateMenu(Long id, UpdateMenuRequest dto);
+
     List<MenuItem> getMenusFor(Category category, SortBy sortBy);
 }

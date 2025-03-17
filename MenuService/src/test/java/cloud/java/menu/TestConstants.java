@@ -1,4 +1,4 @@
-package cloud.java.menu.repositories.custom;
+package cloud.java.menu;
 
 import java.math.BigDecimal;
 

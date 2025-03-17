@@ -26,6 +26,8 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.10.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:postgresql")
+    implementation("org.mapstruct:mapstruct:1.6.3")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
     implementation("org.testcontainers:jdbc:1.20.6")
     runtimeOnly("org.postgresql:postgresql")
 }

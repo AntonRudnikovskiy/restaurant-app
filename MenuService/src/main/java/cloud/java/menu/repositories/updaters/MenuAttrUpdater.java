@@ -1,4 +1,4 @@
-package cloud.java.menu.service;
+package cloud.java.menu.repositories.updaters;
 
 import cloud.java.menu.dto.UpdateMenuRequest;
 import cloud.java.menu.model.MenuItem;
