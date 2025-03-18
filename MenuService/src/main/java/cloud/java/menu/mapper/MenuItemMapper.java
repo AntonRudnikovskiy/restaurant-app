@@ -27,6 +27,5 @@ public interface MenuItemMapper {
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "category", ignore = true)
     @Mapping(target = "weight", ignore = true)
-    @Mapping(target = "ingredientCollection", ignore = true)
     MenuItem toEntity(UpdateMenuRequest updateMenuRequest);
 }
