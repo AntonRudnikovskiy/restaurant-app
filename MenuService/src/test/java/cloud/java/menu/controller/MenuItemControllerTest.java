@@ -1,11 +1,9 @@
 package cloud.java.menu.controller;
 
+import cloud.java.menu.BaseIntegrationTest;
 import cloud.java.menu.dto.MenuItemDto;
-import cloud.java.menu.service.BaseTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -17,9 +15,7 @@ import static cloud.java.menu.TestData.createMenuRequest;
 import static cloud.java.menu.TestData.updateMenuFullRequest;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@AutoConfigureMockMvc
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class MenuItemControllerTest extends BaseTest {
+public class MenuItemControllerTest extends BaseIntegrationTest {
     @Autowired
     private WebTestClient webTestClient;
 

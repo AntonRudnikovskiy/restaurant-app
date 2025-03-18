@@ -1,5 +1,6 @@
 package cloud.java.menu.service;
 
+import cloud.java.menu.BaseIntegrationTest;
 import cloud.java.menu.TestData;
 import cloud.java.menu.dto.CreateMenuRequest;
 import cloud.java.menu.dto.MenuItemDto;
@@ -13,7 +14,6 @@ import cloud.java.menu.repositories.MenuItemRepository;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -24,8 +24,7 @@ import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-@SpringBootTest
-class MenuServiceImplTest extends BaseTest {
+class MenuServiceImplTest extends BaseIntegrationTest {
     @Autowired
     private MenuService menuService;
     @Autowired
