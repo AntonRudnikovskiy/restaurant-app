@@ -1,2 +1,2 @@
 rootProject.name = "restaurant-app"
-include("MenuService")
+include("menu-service")

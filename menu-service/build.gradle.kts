@@ -5,10 +5,18 @@ plugins {
 }
 
 group = "cloud.java"
-version = "0.0.1-SNAPSHOT"
+version = ""
 
 repositories {
     mavenCentral()
+}
+
+tasks.named<Jar>("jar") {
+    enabled = false
+}
+
+tasks.named<Jar>("jar") {
+    archiveBaseName.set("menu-service")
 }
 
 dependencies {
