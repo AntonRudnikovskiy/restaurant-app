@@ -1,0 +1,26 @@
+server:
+  port: 9092
+  shutdown: graceful
+  netty:
+    # время ожидания установки TCP соединения с сервером
+    connection-timeout: 3s
+    # время ожидания до закрытия TCP соединения, по которому не передаются данные
+    idle-timeout: 20s
+
+spring:
+  application:
+    name: orders-service
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  r2dbc:
+    username: user
+    password: password
+    url: r2dbc:postgresql://localhost:15432/orders_service_db
+    pool:
+      max-create-connection-time: 2s
+      initial-size: 6
+      max-size: 12
+  flyway:
+    user: ${spring.r2dbc.username}
+    password: ${spring.r2dbc.password}
+    url: jdbc:postgresql://localhost:15432/orders_service_db
