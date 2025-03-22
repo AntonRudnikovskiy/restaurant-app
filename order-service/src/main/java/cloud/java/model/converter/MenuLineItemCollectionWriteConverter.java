@@ -1,7 +1,7 @@
 package cloud.java.model.converter;
 
-import cloud.java.dto.MenuLineItem;
 import cloud.java.exception.OrderServiceException;
+import cloud.java.model.MenuLineItem;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.r2dbc.postgresql.codec.Json;

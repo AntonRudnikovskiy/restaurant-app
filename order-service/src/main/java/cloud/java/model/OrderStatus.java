@@ -1,6 +1,6 @@
 package cloud.java.model;
 
-public enum Status {
+public enum OrderStatus {
     NEW,
     ACCEPTED,
     REJECTED

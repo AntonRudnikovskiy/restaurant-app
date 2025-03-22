@@ -24,3 +24,11 @@ spring:
     user: ${spring.r2dbc.username}
     password: ${spring.r2dbc.password}
     url: jdbc:postgresql://localhost:15432/orders_service_db
+
+external:
+  menu-service-url: http://localhost:9091
+  menu-info-path: /v1/menu-item/menu-info
+  default-timeout: 2s
+  retry-backoff: 100ms
+  retry-count: 5
+  retry-jitter: 0.75

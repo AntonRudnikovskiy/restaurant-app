@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 class MenuServiceImplTest extends BaseIntegrationTest {
     @Autowired
-    private MenuService menuService;
+    private IMenuService menuService;
     @Autowired
     private MenuItemRepository repository;
 

@@ -30,7 +30,7 @@ public class MenuOrder {
     private String street;
     private int house;
     private int apartment;
-    private Status status;
+    private OrderStatus status;
     @Column("menu_line_items")
     private List<MenuLineItem> menuLineItems;
     @Column("created_by")

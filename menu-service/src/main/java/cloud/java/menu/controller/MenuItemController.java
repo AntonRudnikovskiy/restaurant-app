@@ -2,17 +2,21 @@ package cloud.java.menu.controller;
 
 import cloud.java.menu.dto.CreateMenuRequest;
 import cloud.java.menu.dto.MenuItemDto;
+import cloud.java.menu.dto.OrderMenuRequest;
+import cloud.java.menu.dto.OrderMenuResponse;
 import cloud.java.menu.dto.SortBy;
 import cloud.java.menu.dto.UpdateMenuRequest;
 import cloud.java.menu.model.Category;
-import cloud.java.menu.service.MenuService;
+import cloud.java.menu.service.IMenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
@@ -28,12 +32,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Slf4j
 @Tag(name = "MenuItemController", description = "REST API для работы с меню.")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/menu-items")
+@RequestMapping("/v1/menu-item")
 public class MenuItemController {
-    private final MenuService menuService;
+    private final IMenuService menuService;
 
     @Operation(
             summary = "${api.menu-create.summary}",
@@ -56,7 +61,7 @@ public class MenuItemController {
                     )),
     })
     @PostMapping("/")
-    public ResponseEntity<MenuItemDto> createMenuItem(@RequestBody CreateMenuRequest request) {
+    public ResponseEntity<MenuItemDto> createMenuItem(@RequestBody @Valid CreateMenuRequest request) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(menuService.createMenuItem(request));
@@ -86,7 +91,7 @@ public class MenuItemController {
     @PatchMapping("/{id}")
     public ResponseEntity<MenuItemDto> updateMenuItem(
             @PathVariable("id") Long id,
-            @RequestBody UpdateMenuRequest update) {
+            @RequestBody @Valid UpdateMenuRequest update) {
         return ResponseEntity.ok().body(menuService.updateMenuItem(id, update));
     }
 
@@ -141,5 +146,25 @@ public class MenuItemController {
             @RequestParam("category") String category,
             @RequestParam(value = "sort", defaultValue = "az") String sortBy) {
         return ResponseEntity.ok(menuService.getMenusFor(Category.fromString(category), SortBy.fromString(sortBy)));
+    }
+
+    @Operation(
+            summary = "${api.menu-info.summary}",
+            description = "${api.menu-info.description}"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "${api.response.getMenuInfoOk}"),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "${api.response.getMenuInfoBadRequest}",
+                    content = @Content(
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
+            )
+    })
+    @PostMapping("/menu-info")
+    public OrderMenuResponse getMenusForOrder(@RequestBody @Valid OrderMenuRequest request) {
+        log.info("Received request to GET info for menu with names: {}", request.getMenuNames());
+        return menuService.getMenusForOrder(request);
     }
 }

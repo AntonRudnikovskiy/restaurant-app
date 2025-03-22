@@ -1,17 +1,24 @@
 package cloud.java.repository;
 
+import cloud.java.BaseTest;
+import cloud.java.config.R2dbcConfig;
 import cloud.java.model.MenuOrder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.data.r2dbc.DataR2dbcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
-import static cloud.java.repository.TestConstants.*;
+import static cloud.java.TestConstants.*;
 
 @DataR2dbcTest
+@Import({R2dbcConfig.class})
+@ImportAutoConfiguration({JacksonAutoConfiguration.class})
 public class MenuOrderRepositoryTest extends BaseTest {
     @Autowired
     private MenuOrderRepository repository;
